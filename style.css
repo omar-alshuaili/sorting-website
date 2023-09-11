@@ -11,6 +11,92 @@
 body {
     background-color: rgb(30, 30, 30);
     height: 100vh;
+    overflow: hidden;
+    
+
+}
+main{
+    position: relative;
+}
+.spinner-box {
+   
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 10px;
+    background-color: transparent;
+}
+.spinner-box span{
+    font-size: 25px;
+}
+.loading{
+    background-color:  rgb(30, 30, 30);
+    width: 100%;
+    display: flex;
+    position: absolute;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    bottom: 0;
+    animation: hideLoading 0.9s cubic-bezier(.93,.4,.47,.69) 3s forwards;
+}
+
+
+.pulse-container {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.pulse-bubble {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+}
+
+.pulse-bubble-1 {
+    animation: pulse .4s ease 0s infinite alternate;
+}
+
+.pulse-bubble-2 {
+    animation: pulse .4s ease .2s infinite alternate;
+}
+
+.pulse-bubble-3 {
+    animation: pulse .4s ease .4s infinite alternate;
+}
+
+
+@keyframes pulse {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: .25;
+        transform: scale(.75);
+    }
+}
+
+
+@keyframes hideLoading {
+    from {
+        height: 100%;
+        /* opacity: 1; */
+        transform: translateY(0);
+    }
+
+    to {
+        /* opacity: 0; */
+        height: 0;
+        z-index: -1;
+        transform: translateY(100px);
+
+    }
 }
 
 main {
@@ -138,17 +224,18 @@ span {
 }
 
 @keyframes fade-in {
-    from{
+    from {
         transform: translateX(70px);
         opacity: 0;
     }
-    to{
+
+    to {
         transform: translateX(0px);
         opacity: 1;
     }
 }
 
-.action{
+.action {
     cursor: pointer;
 }
 
@@ -156,9 +243,10 @@ span {
     pointer-events: none;
 }
 
-.action.disable-div{
+.action.disable-div {
     opacity: 0.4;
 }
-.input-div:last-child .options{
+
+.input-div:last-child .options {
     max-width: 100px;
 }
