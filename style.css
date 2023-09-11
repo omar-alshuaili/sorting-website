@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
+
+}
+
+body {
+    background-color: rgb(30, 30, 30);
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5rem;
+    height: 100%;
+    width: 100%;
+    gap: 30px;
+}
+
+.top {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border: 3px solid white;
+    padding: 1.5rem;
+    gap: 30px;
+    height: 20%;
+}
+
+.input-div {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    min-width: 260px;
+    position: relative;
+    justify-content: end;
+    height: 100%;
+
+}
+
+label {
+    color: rgb(231, 231, 231);
+    font-size: 25px;
+}
+
+.options {
+    position: relative;
+    padding-block: 1rem;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 0.5rem;
+
+}
+
+.other-options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: -70%;
+}
+
+span {
+
+    color: rgb(231, 231, 231);
+}
+
+.icon {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /* border: 1px solid white; */
+    height: 100%;
+    position: absolute;
+    right: 0;
+    width: 40%;
+}
+
+.icon img {
+    cursor: pointer;
+    padding: 1rem;
+    -webkit-filter: invert(100%);
+    /* Safari/Chrome */
+    filter: invert(100%);
+    width: 50%;
+    height: 100%;
+    transition: all 100ms ease-in-out;
+}
+
+.icon img:hover {
+    background-color: white;
+}
+
+.icon :nth-child(2) {
+    transform: rotate(180deg);
+}
+
+.bottom {
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-end;
+    display: flex;
+    border: 3px solid white;
+    padding: 1.5rem;
+    padding-bottom: 0;
+    height: 80%;
+}
+
+.col {
+    width: 10px;
+    border: 0.09px solid black;
+    border-bottom: 0;
+    background-color: white;
+}
+
+.current {
+    background-color: green;
+}
+
+.next {
+    background-color: red;
+}
+
+.sort_algo {
+    transform: translateX(70px);
+    opacity: 0;
+    animation: fade-in 200ms ease-in-out forwards;
+}
+
+@keyframes fade-in {
+    from{
+        transform: translateX(70px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+.action{
+    cursor: pointer;
+}
+
+.disable-div {
+    pointer-events: none;
+}
+
+.action.disable-div{
+    opacity: 0.4;
+}
+.input-div:last-child .options{
+    max-width: 100px;
+}
