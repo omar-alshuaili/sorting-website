@@ -12,25 +12,29 @@ body {
     background-color: rgb(30, 30, 30);
     height: 100vh;
     overflow: hidden;
-    
+
 
 }
-main{
+
+main {
     position: relative;
 }
+
 .spinner-box {
-   
+
     display: flex;
     justify-content: center;
     align-items: end;
     gap: 10px;
     background-color: transparent;
 }
-.spinner-box span{
+
+.spinner-box span {
     font-size: 25px;
 }
-.loading{
-    background-color:  rgb(30, 30, 30);
+
+.loading {
+    background-color: rgb(30, 30, 30);
     width: 100%;
     display: flex;
     position: absolute;
@@ -39,7 +43,7 @@ main{
     justify-content: center;
     z-index: 100;
     bottom: 0;
-    animation: hideLoading 0.9s cubic-bezier(.93,.4,.47,.69) 3s forwards;
+    animation: hideLoading 0.9s cubic-bezier(.93, .4, .47, .69) 3s forwards;
 }
 
 
@@ -138,6 +142,7 @@ label {
 }
 
 .options {
+    min-height: 55px;
     position: relative;
     padding-block: 1rem;
     border: 1px solid white;
@@ -145,7 +150,7 @@ label {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-inline: 0.5rem;
+    padding-inline: 0.7rem;
 
 }
 
@@ -249,4 +254,45 @@ span {
 
 .input-div:last-child .options {
     max-width: 100px;
+}
+
+input[type="range"]{
+    width: 100%;
+}
+
+
+/***** Track Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #616161;
+    height: .4rem;
+    width: 100%;
+}
+
+/******** Firefox ********/
+input[type="range"]::-moz-range-track {
+    background: #616161;
+    height: .4rem;
+    width: 100%;
+}
+
+/***** Thumb Styles *****/
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    background-color: #505050;
+    margin-top:  -5px;
+    width: 100%;
+
+}
+
+/***** Thumb Styles *****/
+/***** Firefox *****/
+input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    background-color: #505050;
+    margin-top:  -5px;
+    width: 100%;
 }

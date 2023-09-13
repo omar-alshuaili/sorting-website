@@ -2,6 +2,14 @@ let board = document.querySelector(".bottom")
 let main = document.getElementsByTagName('main')[0].clientHeight
 let h = board.clientHeight / main * 100
 let boradWidth = parseInt(board.clientWidth / 10)
+
+let circle_slider = document.getElementById('circle').oninput = function () {
+    var value = (this.value - this.min) / (this.max - this.min) / 100
+    boradWidth = parseInt(board.clientWidth / 10) * Math.max(this.value, 10) / 100
+    clearBoard()
+    creatBoard()
+}
+
 if (boradWidth % 2 != 0) {
     boradWidth -= 1
 }
@@ -180,6 +188,3 @@ function Makedelay(time) {
 }
 
 
-// quickSort(){
-//     let low =
-// }
