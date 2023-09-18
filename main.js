@@ -124,7 +124,88 @@ function clearBoard() {
 
 
 async function solveBoard() {
+    let cols = document.querySelectorAll('.bottom .col');
     start_btn.classList.add('disable-div')
+
+    if (sort_algo.innerHTML === 'Bubble sort') {
+        BubbleSort();
+    }
+    else {
+        quickSort(cols, 0, cols.length - 1)
+        // console.log(board)
+    }
+
+}
+
+async function quickSort(cols, from, to) {
+    if (from < to) {
+        // console.log(from, to
+        pivot_location = await Partition(cols, from, to)
+        // console.log(pivot_location)
+        await quickSort(cols, from, pivot_location - 1)
+        await quickSort(cols, pivot_location + 1, to)
+    }
+}
+
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function quickSort(cols, from, to) {
+    if (from < to) {
+        const pivot_location = await Partition(cols, from, to);
+        await quickSort(cols, from, pivot_location - 1);
+        await quickSort(cols, pivot_location + 1, to);
+    }
+}
+
+async function Partition(cols, from, to) {
+    let temp = from;
+    cols[temp].classList.add('pivot');
+
+    while (from < to) {
+        cols[from].classList.remove('current');
+        cols[to].classList.remove('next');
+        if (
+            parseInt(cols[from + 1].style.height) * h >
+            parseInt(cols[temp].style.height) * h &&
+            parseInt(cols[temp].style.height) * h <
+            parseInt(cols[to].style.height) * h
+        ) {
+            let delay = 0;
+            if (speed_choices.indexOf(speed.innerHTML) === 0) {
+                delay = 1000;
+            } else if (speed_choices.indexOf(speed.innerHTML) === 1) {
+                delay = 50;
+            } else if (speed_choices.indexOf(speed.innerHTML) === 2) {
+                delay = 10;
+            }
+            await sleep(delay); // Introduce a delay here.
+            swap(cols, from, to);
+            cols[from].classList.add('current');
+            cols[to].classList.add('next');
+        } else {
+            temp++;
+        }
+
+        from++;
+        to--;
+    }
+    cols[temp].classList.remove('pivot');
+    return temp;
+}
+
+async function swap(cols, a, b) {
+    let temp = cols[a].style.height;
+    cols[a].style.height = cols[b].style.height;
+    cols[b].style.height = temp;
+}
+
+
+
+
+async function BubbleSort() {
     let cols = document.querySelectorAll('.bottom .col');
     console.log(cols.length)
 
@@ -160,7 +241,6 @@ async function solveBoard() {
                 break;
             }
         }
-
     }
 }
 function sorted(cols) {
@@ -186,5 +266,3 @@ function Makedelay(time) {
         }, time);
     });
 }
-
-
